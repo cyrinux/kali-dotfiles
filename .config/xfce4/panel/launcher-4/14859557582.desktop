@@ -1,0 +1,20 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Firefox ESR
+Name[it]=Firefox ESR
+Comment=Browse the World Wide Web
+Comment[it]=Esplora il web
+GenericName=Web Browser
+GenericName[it]=Browser Web
+X-GNOME-FullName=Firefox ESR Web Browser
+X-GNOME-FullName[it]=Firefox ESR Browser Web
+Exec=/usr/lib/firefox-esr/firefox-esr %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=firefox-esr
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
+StartupWMClass=Firefox
+StartupNotify=true
+X-XFCE-Source=file:///usr/share/applications/firefox-esr.desktop
