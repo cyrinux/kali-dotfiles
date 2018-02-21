@@ -16,4 +16,4 @@
 ![alt text](https://lut.im/h2uP2dilnO/ETWiYNk5IHFb5zKs.png)
 
 **Kali Linux Xfce/i3 - dirty**
-![alt text](https://lut.im/3rIw6G6IQz/IYlEgJtrWz7y10uu.png)
+![alt text](https://lut.im/DGsGHJ4Dfq/7ecVwNRLfz0wBnvb.png)
