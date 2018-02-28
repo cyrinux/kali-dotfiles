@@ -1,17 +1,17 @@
-################################
+#################################
 #
 # i3wm configuration file
 # -----------------------
 #
-# Version: 0.1_kali - 2018/02/20
+# Version: 0.11_kali - 2018/02/28
 # Author: Brainfuck
 #
-################################
+#################################
 
 
-################################
+#################################
 # Colors
-################################
+#################################
 # class                  border  backgr  text     indicator child_border
 client.focused           #263238 #2f3d44 #cfd8dc  #263238   #263238
 client.focused_inactive  #151b1e #2f3d44 #b2babd  #151b1e   #151b1e
@@ -19,9 +19,9 @@ client.unfocused         #151b1e #222d32 #b2babd  #2f3d44   #151b1e
 client.urgent            #03a9f4 #2f3d44 #ffffff  #2f3d44   #03a9f4
 
 
-################################
+#################################
 # Windows style
-################################
+#################################
 # font for window titles. ISO 10646 = Unicode
 font xft:Tamsyn 12
 
@@ -63,9 +63,9 @@ mode "resize" {
 bindsym $mod+z mode "resize"
 
 
-################################
+#################################
 # Keybindings
-################################
+#################################
 # Mod4 = Super Key
 set $mod Mod4
 
@@ -132,12 +132,13 @@ bindsym $mod+Shift+C reload
 bindsym $mod+Shift+R restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# not used, logout from xfce
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
-################################
+#################################
 # Workspaces
-################################
+#################################
 # customize workspaces name
 set $ws1    
 set $ws2    
@@ -171,7 +172,7 @@ bindsym $mod+Shift+0 move container to workspace 0
 
 ## workspaces assignment
 # force a window on a named workspace
-assign [class="Xfce4-terminal"]	$ws1
+#assign [class="Xfce4-terminal"]	$ws1
 assign [class="Firefox"]	    $ws2
 assign [class="Vim"]            $ws3
 assign [class="Zathura"]        $ws4
@@ -186,9 +187,9 @@ for_window [class="Tor Browser"] floating enable border pixel 2
 for_window [class="Xfce4-notifyd"] floating enable border none focus mode_toggle
 
 
-################################
+#################################
 ## My Keybindings
-################################
+#################################
 # applications
 # --no-startup-id = i don't need startup notifications
 # https://faq.i3wm.org/question/561/what-is-that-thing-called-no-startup-id
@@ -200,9 +201,11 @@ bindsym $mod+d exec rofi -show run -font "tamsyn 12"
 bindsym $mod+t exec --no-startup-id sh -c ~/bin/tor-browser_en-US/Browser/start-tor-browser
 
 
-################################
+#################################
 # Start up commands
-################################
+#################################
+# not used, start up applications managed by xfce
+
 # compton
 #exec --no-startup-id /usr/bin/compton --config ~/.config/compton.conf
 #exec --no-startup-id xfce4-pulseaudio-plugin
