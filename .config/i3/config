@@ -3,7 +3,7 @@
 # i3wm configuration file
 # -----------------------
 #
-# Version: 0.11_kali - 2018/02/28
+# Version: 0.12_kali - 2018/03/22
 # Author: Brainfuck
 #
 #################################
@@ -132,8 +132,10 @@ bindsym $mod+Shift+C reload
 bindsym $mod+Shift+R restart
 
 # exit i3 (logs you out of your X session)
-# not used, logout from xfce
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# exit xfce4
+bindsym $mod+Shift+e exec --no-startup-id xfce4-session-logout
 
 
 #################################
@@ -176,7 +178,6 @@ bindsym $mod+Shift+0 move container to workspace 0
 assign [class="Firefox"]	    $ws2
 assign [class="Vim"]            $ws3
 assign [class="Zathura"]        $ws4
-
 
 # enable floating mode for selected windows
 for_window [class="Thunar"] floating enable border pixel 2
