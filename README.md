@@ -13,7 +13,7 @@
 * Wallpaper: [mountains_2560x1600](https://lut.im/ZPaufnWHqN/eAXtkrFPFnFc3Dr4.jpg)
 
 **Kali Linux Xfce/i3 - clean**
-![alt text](https://lut.im/h2uP2dilnO/ETWiYNk5IHFb5zKs.png)
+![alt text](https://imgur.com/i27FoUw.jpg)
 
 **Kali Linux Xfce/i3 - dirty**
 ![alt text](https://lut.im/DGsGHJ4Dfq/7ecVwNRLfz0wBnvb.png)
