@@ -3,7 +3,7 @@
 # i3wm configuration file
 # -----------------------
 #
-# Version: 0.14_kali - 2018/07/15
+# Version: 0.15_kali - 2018/09/02
 # Author: Brainfuck
 # https://github.com/brainfucksec/kali-dotfiles
 #
@@ -183,13 +183,15 @@ bindsym $mod+Shift+0 move container to workspace 0
 ## Workspaces assignment
 #
 # force a window on a named workspace
+# xprop | grep 'CLASS', to get the name of the window class
 #assign [class="Xfce4-terminal"]	1
 assign [class="Firefox"]	    2
+assign [class="Pale moon"]       2
 assign [class="Vim"]            3
 assign [class="Zathura"]        4
 
 # enable floating mode for selected windows
-for_window [class="Thunar"] floating enable border pixel 2
+#for_window [class="Thunar"] floating enable border pixel 2
 #for_window [class="Lxappearance"] floating enable border pixel 2
 for_window [class="Nitrogen"] floating enable border pixel 2
 for_window [class="Bleachbit"] floating enable border pixel 2
@@ -203,8 +205,9 @@ for_window [class="Xfce4-notifyd"] floating enable border none focus mode_toggle
 
 # applications
 bindsym $mod+F1 exec --no-startup-id firefox
-bindsym $mod+F2 exec --no-startup-id xfce4-terminal -e vim
-bindsym $mod+F3 exec --no-startup-id thunar
+bindsym $mod+F2 exec --no-startup-id palemoon
+bindsym $mod+F3 exec --no-startup-id xfce4-terminal -e vim
+bindsym $mod+F4 exec --no-startup-id thunar
 bindsym Print exec xfce4-screenshooter
 bindsym $mod+d exec rofi -show run -font "tamsyn 12"
 bindsym $mod+t exec --no-startup-id sh -c ~/bin/tor-browser_en-US/Browser/start-tor-browser
