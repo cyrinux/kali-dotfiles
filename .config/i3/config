@@ -3,7 +3,7 @@
 # i3wm configuration file
 # -----------------------
 #
-# Version: 0.16_kali - 2018/09/11
+# Version: 0.20_kali - 2018/10/07
 # Author: Brainfuck
 # https://github.com/brainfucksec/kali-dotfiles
 #
@@ -150,49 +150,48 @@ bindsym $mod+Shift+e exec --no-startup-id xfce4-session-logout
 ###############################################
 
 # customize workspaces name
-#set $ws1    
-#set $ws2    
-#set $ws3    
-#set $ws4    
-#set $ws5    
+set $ws1 1  
+set $ws2 2  
+set $ws3 3  
+set $ws4 4  
+set $ws5 5  
+set $ws6 6  
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 0
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 0
 
 ## Workspaces assignment
-#
 # force a window on a named workspace
 # xprop | grep 'CLASS', to get the name of the window class
-#assign [class="Xfce4-terminal"]	1
-assign [class="Firefox"]	    2
-assign [class="Tor Browser"]    2
-assign [class="Vim"]            3
-assign [class="Zathura"]        4
+#assign [class="Xfce4-terminal"]	$ws1
+assign [class="Firefox"]	    $ws2
+assign [class="Tor Browser"]    $ws2
+assign [class="Vim"]            $ws4
+assign [class="Zathura"]        $ws5
+assign [class='vlc']            $ws6
 
 # enable floating mode for selected windows
-#for_window [class="Thunar"] floating enable border pixel 2
-#for_window [class="Lxappearance"] floating enable border pixel 2
 for_window [class="Nitrogen"] floating enable border pixel 2
 for_window [class="Bleachbit"] floating enable border pixel 2
 for_window [class="Tor Browser"] floating enable border pixel 2
@@ -200,7 +199,7 @@ for_window [class="Xfce4-notifyd"] floating enable border none focus mode_toggle
 
 
 ###############################################
-# My Keybindings
+# My Shortcuts
 ###############################################
 
 # applications
@@ -217,7 +216,3 @@ bindsym $mod+t exec --no-startup-id sh -c ~/bin/tor-browser_en-US/Browser/start-
 ###############################################
 
 ## Section not used! start up applications are managed from xfce
-
-# compton
-#exec --no-startup-id /usr/bin/compton --config ~/.config/compton.conf
-#exec --no-startup-id xfce4-pulseaudio-plugin

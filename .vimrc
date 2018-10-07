@@ -8,13 +8,17 @@
 "   ## ##    ##  ##     ## ##    ##  ##    ##
 "    ###    #### ##     ## ##     ##  ######
 "
+""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""
 "
 " vim configuration file
+" ----------------------
 "
-" Version: 0.40_kali - 2018/06/09 10:20:38
+" Version: 0.50_kali - 2018/10/07 19:56:57
 " Author: Brainfuck
+"
+" https://github.com/brainfucksec/dotfiles
 "
 """"""""""""""""""""""""""""""""""""""""""""""
 
@@ -38,7 +42,7 @@ filetype plugin indent on
 " the plugins.
 let mapleader = ","
 
-" vimwiki plugin settings
+" vimwiki
 let g:vimwiki_list = [{'path': '~/documents/vimwiki/index.wiki'}]
 
 
@@ -89,12 +93,14 @@ autocmd BufWritePre * :%s/\s\+$//e
 """"""""""""""""""""""""""""""""""""""""""""""
 " => Colors and fonts
 """"""""""""""""""""""""""""""""""""""""""""""
+
 " Terminal settings
 set t_Co=256
-set termguicolors
+"set termguicolors
 
 " Colorscheme
-colorscheme iceberg
+" colorscheme from pywal
+colorscheme wal
 set background=dark
 
 " Extend background color to the whole screen (xfce4-terminal fix)
@@ -111,6 +117,9 @@ set encoding=utf8
 " Use Unix for new files and autodetect the rest
 set ffs=unix,dos,mac
 
+" Force Markdown syntax
+autocmd BufRead,BufNew *.md set filetype=markdown
+
 " Turn backup off, swap file off
 set nobackup
 set noswapfile
@@ -120,8 +129,12 @@ set noswapfile
 " => Memory, CPU
 """"""""""""""""""""""""""""""""""""""""""""
 
-" Keep more info in memory to speed thing up
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
 set hidden
+
+" Sets how many lines of history VIM has to remember
 set history=100
 
 
@@ -139,12 +152,17 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+" 1 tab == 2 spaces for selected filetypes
+autocmd FileType xml,html,xhtml setlocal shiftwidth=2 tabstop=2
+autocmd BufRead,BufNew *.css setlocal shiftwidth=2 tabstop=2
+
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
 " indentLine: indent lines style
 let g:indentLine_char = '│'
+"let g:indentLine_setColors = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""
@@ -152,7 +170,6 @@ let g:indentLine_char = '│'
 """"""""""""""""""""""""""""""""""""""""""""
 
 " Completion popup settings (:help 'completeopt')
-set completeopt-=preview
 set completeopt+=menuone,noinsert,noselect
 
 " Shut off completion messages
@@ -193,7 +210,7 @@ set noshowmode
 
 " Set colorscheme
 let g:lightline = {
-      \ 'colorscheme': 'iceberg',
+      \ 'colorscheme': 'molokai',
       \ }
 
 
@@ -206,6 +223,9 @@ map \r :source ~/.vimrc<CR>
 
 " Cancel a search with Ctrl+l
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" Make jj do Esc
+inoremap jj <Esc>
 
 " Don't use arrow keys
 map <up> <nop>
