@@ -1,19 +1,30 @@
-## kali-dotfiles
+```
+
+██╗  ██╗ █████╗ ██╗     ██╗    ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗
+██║ ██╔╝██╔══██╗██║     ██║    ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝
+█████╔╝ ███████║██║     ██║    ██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗
+██╔═██╗ ██╔══██║██║     ██║    ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║
+██║  ██╗██║  ██║███████╗██║    ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║
+╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝    ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
+
+```
 
 ### Kali Linux dotfiles
 
-* DE: Xfce with i3wm
-* Dock: xfce4-panel
-* Terminal: xfce4-terminal
-* Editor: Vim
-* PDF Reader: zathura
-* Other: nitrogen
-* GTK3 Theme: [Arc-Dark](https://github.com/horst3180/Arc-theme)
-* Icons Theme: [Papirus-Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
-* Wallpaper: [mountains_2560x1600](https://lut.im/ZPaufnWHqN/eAXtkrFPFnFc3Dr4.jpg)
+Setup
+-----
+```
+Bar                 > xfce4-panel
+Compositor          > compton
+File Manager        > thunar
+Media Player        > vlc
+PDF Viewer          > zathura
+Text Editor         > vim
+Terminal Emulator   > xfce4-terminal
+Window Manager      > i3
+```
 
-**Kali Linux Xfce/i3 - clean**
-![alt text](https://imgur.com/i27FoUw.jpg)
+**Kali Linux Xfce/i3**
+![alt text](https://imgur.com/7ihXT8A.png)
 
-**Kali Linux Xfce/i3 - dirty**
-![alt text](https://lut.im/DGsGHJ4Dfq/7ecVwNRLfz0wBnvb.png)
+![alt text](https://imgur.com/UP40McU.png)
