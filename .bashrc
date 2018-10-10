@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='┌──${debian_chroot:+($debian_chroot)} \[\e[1;37m\]\u\[\e[m\] ─── \[\e[1;37m\]\H\[\e[m\] \[\e[1;34m\][\w]\[\e[m\]
+    PS1='┌──${debian_chroot:+($debian_chroot)}[\[\e[0;32m\]\u\[\e[m\]]───[\[\e[0;32m\]\H\[\e[m\]] \[\e[1;34m\][\w]\[\e[m\]
 └────╼ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -117,6 +117,7 @@ fi
 
 # PATH
 export PATH=$PATH:~/bin
+export PATH=$PATH:~/.local/bin
 
 # EDITOR
 export EDITOR=vim
@@ -124,3 +125,5 @@ export EDITOR=vim
 # Uniform qt5 applications style
 export QT_STYLE_OVERRIDE=gtk
 
+# Import colorscheme from 'wal' asynchronously
+(cat ~/.cache/wal/sequences &)
