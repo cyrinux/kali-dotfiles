@@ -4,69 +4,49 @@ alias la='ls -alFh'
 alias l1='ls -1'
 alias l1m='ls -1 | more'
 alias lm='ls | more'
-alias cat='ccat'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cd-='cd -'
 alias mkdir='mkdir -p -v'
 alias cpr='cp -Rv'
-alias cprs='rsync -r --info=progress2'
+alias cprs='rsync -ahv --info=progress2'
 alias ch='printf "\033c"'
 alias src='source ~/.bashrc'
 alias ex='extract'
+alias m='mountdev'
+alias um='unmountdev'
 
 
 # system administration
+alias sc='sudo systemctl'
+alias scstart='sudo systemctl start'
+alias scstop='sudo systemctl stop'
+alias scstatus='sudo systemctl status'
+alias screstart='sudo systemctl restart'
+alias scrun='sudo systemctl -t service -a --state running --no-page --no-legend'
+alias scfailed='sudo systemctl --failed | head -n -6 | tail -n -1'
 alias free='free -mt'
 alias ps='ps auxf'
 alias ht='htop'
 alias cputemp='sensors | grep Core'
-alias vpncfg='sudo openvpn --config'
 
 
 # directories
 alias h='cd ~/'
+alias dc='cd ~/documents'
 alias dk='cd ~/Scrivania'
 alias dl='cd ~/downloads'
 alias p='cd ~/programming'
-alias pen='cd ~/pentest'
-alias t='cd ~/tools'
-alias v='cd /opt/vpn'
-alias fm='thunar $PWD'
-
-
-## systemctl commands
-# running services
-alias scrun='sudo systemctl -t service -a --state running --no-page --no-legend'
-
-# failed units
-alias scfailed='sudo systemctl --failed | head -n -6 | tail -n -1'
-
-# status of service
-alias scstatus='sudo systemctl status'
-
-# start service
-function scstart {
-    sudo systemctl start "$1"
-    sudo systemctl status "$1"
-}
-
-# stop service
-function scstop {
-    sudo systemctl stop "$1"
-    sudo systemctl status "$1"
-}
-
-# restart service
-function screstart {
-    sudo systemctl restart "$1"
-    sudo systemctl status "$1"
-}
+alias pt='cd ~/pentest'
+alias t='cd ~/tmp'
+alias v='cd /opt/vpn/config'
+alias vp='cd ~/.vim/pack/plugins/start'
+alias fm="thunar '$PWD'"
 
 
 # function extract for common archive formats
-function extract {
+extract() {
     if [[ -z "$1" ]]; then
         # display usage if no parameters given
         echo "Usage: extract <archive file>"
@@ -93,9 +73,29 @@ function extract {
                 esac
             else
                 echo "'$n' - file does not exist"
-            return 1
+                return 1
             fi
         done
     fi
 }
 
+
+# mount device with udisksctl
+mountdev() {
+    if ! udisksctl mount -b "/dev/$1"; then
+        echo "Usage: mountdev sdXX"
+        return 1
+    fi
+}
+
+
+# unmount and eject device
+unmountdev() {
+    if ! udisksctl unmount -b "/dev/$1"; then
+        echo "Usage: unmountdev sdXX"
+        return 1
+    else
+        sleep 1
+        udisksctl power-off -b "/dev/$1"
+    fi
+}
