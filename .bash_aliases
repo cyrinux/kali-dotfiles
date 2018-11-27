@@ -9,6 +9,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cd-='cd -'
 alias mkdir='mkdir -p -v'
+alias cp='cp -v'
 alias cpr='cp -Rv'
 alias cprs='rsync -ahv --info=progress2'
 alias ch='printf "\033c"'
@@ -19,13 +20,11 @@ alias um='unmountdev'
 
 
 # system administration
-alias sc='sudo systemctl'
-alias scstart='sudo systemctl start'
-alias scstop='sudo systemctl stop'
 alias scstatus='sudo systemctl status'
 alias screstart='sudo systemctl restart'
 alias scrun='sudo systemctl -t service -a --state running --no-page --no-legend'
 alias scfailed='sudo systemctl --failed | head -n -6 | tail -n -1'
+alias df='df -Tha --total'
 alias free='free -mt'
 alias ps='ps auxf'
 alias ht='htop'
@@ -39,7 +38,6 @@ alias dk='cd ~/Scrivania'
 alias dl='cd ~/downloads'
 alias p='cd ~/programming'
 alias pt='cd ~/pentest'
-alias t='cd ~/tmp'
 alias v='cd /opt/vpn/config'
 alias vp='cd ~/.vim/pack/plugins/start'
 alias fm="thunar '$PWD'"
@@ -97,5 +95,6 @@ unmountdev() {
     else
         sleep 1
         udisksctl power-off -b "/dev/$1"
+
     fi
 }
