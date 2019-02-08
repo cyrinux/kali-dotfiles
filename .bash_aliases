@@ -1,9 +1,17 @@
-# basic shortcuts
+# =========================================================
+# => bash aliases
+# =========================================================
+
+
+# =========================================================
+# => Common commands
+# =========================================================
 alias ll='ls -lFh'
 alias la='ls -alFh'
 alias l1='ls -1'
 alias l1m='ls -1 | more'
 alias lm='ls | more'
+alias lsn='ls | cat -n'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -12,38 +20,52 @@ alias mkdir='mkdir -p -v'
 alias cp='cp -v'
 alias cpr='cp -Rv'
 alias cprs='rsync -ahv --info=progress2'
-alias ch='printf "\033c"'
+alias cs='printf "\033c"'
 alias src='source ~/.bashrc'
-alias ex='extract'
-alias m='mountdev'
-alias um='unmountdev'
 
 
-# system administration
-alias scstatus='sudo systemctl status'
-alias screstart='sudo systemctl restart'
-alias scrun='sudo systemctl -t service -a --state running --no-page --no-legend'
-alias scfailed='sudo systemctl --failed | head -n -6 | tail -n -1'
+# =========================================================
+# => System administration commands
+# =========================================================
+# systemd service
+alias sc='sudo systemctl'
+alias scr='sudo systemctl daemon-reload'
+alias scs='sudo systemctl -t service -a --state running --no-page --no-legend'
+alias scf='sudo systemctl --failed | head -n -6 | tail -n -1'
+
+# memory/cpu
 alias df='df -Tha --total'
 alias free='free -mt'
 alias ps='ps auxf'
 alias ht='htop'
 alias cputemp='sensors | grep Core'
 
+# volumes management
+alias ex='extract'
+alias m='mountdev'
+alias u='unmountdev'
 
-# directories
+
+# =========================================================
+# Directories shortcuts
+# =========================================================
 alias h='cd ~/'
 alias dc='cd ~/documents'
 alias dk='cd ~/Scrivania'
 alias dl='cd ~/downloads'
 alias p='cd ~/programming'
 alias pt='cd ~/pentest'
+alias pr='cd ~/pentest/reports'
+alias t='cd ~/tmp'
 alias v='cd /opt/vpn/config'
 alias vp='cd ~/.vim/pack/plugins/start'
-alias fm="thunar '$PWD'"
 
 
-# function extract for common archive formats
+# =========================================================
+# Functions
+# =========================================================
+
+# Function extract for common archive formats
 extract() {
     if [[ -z "$1" ]]; then
         # display usage if no parameters given
@@ -78,23 +100,28 @@ extract() {
 }
 
 
-# mount device with udisksctl
+# Mount device with udisksctl
 mountdev() {
-    if ! udisksctl mount -b "/dev/$1"; then
-        echo "Usage: mountdev sdXX"
+    if [[ -z "$1" ]]; then
+        echo "Usage: mountdev <sdxX>"
+        echo "Example: mountdev sdc1"
         return 1
+    else
+        udisksctl mount -b "/dev/$1"
     fi
 }
 
 
-# unmount and eject device
+# Unmount and eject device
 unmountdev() {
-    if ! udisksctl unmount -b "/dev/$1"; then
-        echo "Usage: unmountdev sdXX"
+    if [[ -z "$1" ]]; then
+        echo "Usage: unmountdev <sdxX>"
+        echo "Example: unmountdev sdc1"
         return 1
     else
+        udisksctl unmount -b "/dev/$1"
         sleep 1
         udisksctl power-off -b "/dev/$1"
-
+        echo "Ejected /dev/$1."
     fi
 }
