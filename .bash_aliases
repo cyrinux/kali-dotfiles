@@ -44,6 +44,7 @@ alias cputemp='sensors | grep Core'
 alias ex='extract'
 alias m='mountdev'
 alias u='unmountdev'
+alias gu='gitupdate'
 
 
 # =========================================================
@@ -123,5 +124,30 @@ unmountdev() {
         sleep 1
         udisksctl power-off -b "/dev/$1"
         echo "Ejected /dev/$1."
+    fi
+}
+
+# Update git packages
+gitupdate() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: gitupdate <directory path>"
+        return 1
+    else
+        local repodir="$1"
+        if [[ -d "$repodir" ]]; then
+            echo "[i] Updating git packages, it may take some time..."
+            cd "$repodir"
+            for i in $(find . -name ".git" | cut -c 3-); do
+                echo ""
+                echo "${i}" | sed -e 's/.git//g'
+                cd "$i"
+                cd ..
+                git pull
+                cd "$repodir"
+            done
+        else
+            echo "[ error ] there are no git repositories here :("
+            return 1
+        fi
     fi
 }
